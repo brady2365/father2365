@@ -1,1 +1,172 @@
-<h1>Fathers Day</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Father's Day</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #0a1f44, #1e4fa8);
+    color: white;
+    text-align: center;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    text-shadow: 0 0 20px rgba(0,150,255,0.8);
+}
+
+.scroll-text {
+    font-size: 1.3rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+}
+
+.quiz-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-box {
+    background: rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 500px;
+}
+
+.quiz-box h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #4da6ff;
+    border-radius: 12px;
+    background: #1b5fd6;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    background: #4da6ff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#secret {
+    display: none;
+    margin-top: 25px;
+    font-size: 1.5rem;
+    color: #8ed0ff;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>Happy Father's Day 💙</h1>
+    <p class="scroll-text">⬇ Scroll Down ⬇</p>
+</section>
+
+<section class="quiz-section">
+    <div class="quiz-box">
+        <h2>Who is your favorite son?</h2>
+
+        <input
+            type="text"
+            id="answer"
+            placeholder="Type your answer here..."
+        >
+
+        <button onclick="checkAnswer()">Submit</button>
+
+        <div id="result"></div>
+
+        <div id="secret">
+            🎉 Correct! Look in your room! 🎁
+        </div>
+    </div>
+</section>
+
+<script>
+function checkAnswer() {
+    const input = document.getElementById("answer");
+    const result = document.getElementById("result");
+    const secret = document.getElementById("secret");
+
+    const answer = input.value.trim().toLowerCase();
+
+    if (answer === "brady") {
+        result.textContent = "✅ Correct!";
+        result.style.color = "#7dff7d";
+        secret.style.display = "block";
+    } else {
+        result.textContent = "❌ Incorrect. Try again.";
+        result.style.color = "#ff7d7d";
+        input.value = "";
+        secret.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
